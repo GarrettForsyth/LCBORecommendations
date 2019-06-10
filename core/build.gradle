@@ -1,0 +1,43 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'androidx.navigation.safeargs'
+
+android {
+    compileSdkVersion Config.compiledSdkVersion
+    defaultConfig {
+        minSdkVersion Config.minSdkVersion
+        targetSdkVersion Config.targetSdkVersion
+    }
+}
+
+configurations {
+    myTestConfiguration.extendsFrom testImplementation
+    myAndroidTestConfiguration.extendsFrom androidTestImplementation
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // Shared Implementation dependencies
+    api Libs.kotlin
+    api Libs.coreKtx
+    api Libs.constraintLayout
+    api Libs.navigation
+    api Libs.navigationUi
+    api Libs.timber
+    api Libs.daggerRuntime
+    api Libs.daggerAndroid
+    api Libs.daggerAndroidSupport
+
+    // Shared unit test dependencies
+    testImplementation Libs.jUnit
+    testImplementation Libs.extJunit
+    testImplementation Libs.espressoCore
+
+    // Shared instrumentation test dependencies
+    androidTestImplementation Libs.jUnit
+    androidTestImplementation Libs.extJunit
+    androidTestImplementation Libs.espressoCore
+}
