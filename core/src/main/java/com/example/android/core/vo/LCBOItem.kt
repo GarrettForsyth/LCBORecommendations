@@ -1,6 +1,8 @@
 package com.example.android.core.vo
 
-import androidx.recyclerview.widget.DiffUtil
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
 
 /**
  * EXAMPLE API RESPONSE:
@@ -57,8 +59,10 @@ import androidx.recyclerview.widget.DiffUtil
  *    "product_no":438457
  *    }
  */
+
+@Entity(tableName = "lcbo_items")
 data class LCBOItem(
-    var id :Int,
+    @PrimaryKey var id :Int,
     var name: String,
     var tags: String,
     var priceInCents: Int,

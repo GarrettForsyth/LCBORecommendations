@@ -3,12 +3,13 @@ package com.example.android.browse.vo
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
 import com.example.android.browse.BR
+import com.example.android.core.vo.SortOrder
 
 /**
  * Object that encapsulates the parameters of a query for LCBO items.
  * Parameters are observed and changes notify the data binding.
  */
-data class BrowseLCBOItemQueryParameters(
+data class LCBOItemQueryParameters(
     private var _filterString: String = "",
     private var _sortOrder: SortOrder = SortOrder.NONE
 ): BaseObservable() {

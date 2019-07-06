@@ -3,6 +3,7 @@ configurations {
     myAndroidTestConfiguration.extendsFrom androidTestImplementation
 }
 
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
@@ -21,6 +22,8 @@ dependencies {
     api Libs.materialDesign
     api Libs.retrofit
     api Libs.gson
+    api Libs.room
+    api Libs.roomKtx
 
     // Shared unit test dependencies
     testImplementation Libs.jUnit
@@ -35,6 +38,7 @@ dependencies {
     testImplementation Libs.roboletric
     testImplementation Libs.mockk
     testImplementation Libs.archTesting
+    testImplementation Libs.roomTesting
     // Once https://issuetracker.google.com/127986458 is fixed this can be testImplementation
     api Libs.fragmentTesting
     api Libs.testCore
@@ -62,4 +66,5 @@ dependencies {
 
     kapt Libs.daggerCompiler
     kapt Libs.daggerAndroidSupportCompiler
+    kapt Libs.roomCompiler
 }

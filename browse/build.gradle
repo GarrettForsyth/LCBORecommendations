@@ -3,12 +3,6 @@ dependencies {
     testImplementation project(path: ':core', configuration: 'myTestConfiguration')
     androidTestImplementation project(path: ':core', configuration: 'myAndroidTestConfiguration')
 
-    // Room
-    implementation Libs.room
-    implementation Libs.roomKtx
-    kapt Libs.roomCompiler
-    testImplementation Libs.roomTesting
-
     kapt Libs.daggerCompiler
     kapt Libs.daggerAndroidSupportCompiler
     kaptAndroidTest Libs.dataBindingCompiler
