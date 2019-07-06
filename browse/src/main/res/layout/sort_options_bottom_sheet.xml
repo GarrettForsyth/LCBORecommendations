@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="bottomSheetState"
+            type="Integer" />
+
+    </data>
+<LinearLayout
+    android:id="@+id/browse_sort_order_options_bottom_sheet"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+    app:behavior_peekHeight="0dp"
+    app:behavior_hideable="true"
+    app:bottomSheetState="@{bottomSheetState}" >
+
+    <TextView
+        android:text="Hello World!"
+        android:textSize="80dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
+
+</layout>

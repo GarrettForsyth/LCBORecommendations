@@ -1,2 +1,2 @@
-include ':app', ':core', ':browse'
+include ':app', ':core', ':browse', ':home'
 rootProject.name='LCBO Recommendations'

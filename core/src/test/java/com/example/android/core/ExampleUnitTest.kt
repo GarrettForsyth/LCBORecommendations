@@ -1,5 +1,6 @@
 package com.example.android.core
 
+import com.example.android.lcborecommendations.test.OpenForTesting
 import org.junit.Test
 
 import org.junit.Assert.*

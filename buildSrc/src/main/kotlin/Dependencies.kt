@@ -1,6 +1,8 @@
 object Plugins {
+    const val gradle = "com.android.tools.build:gradle:${Versions.gradle}"
     const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
     const val safeArgs = "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navigation}"
+    const val allOpen = "org.jetbrains.kotlin:kotlin-allopen:${Versions.allOpen}"
 }
 
 object Libs {
@@ -11,6 +13,9 @@ object Libs {
     const val navigation = "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
     const val navigationUi = "androidx.navigation:navigation-ui:${Versions.navigation}"
     const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
+    const val mockk = "io.mockk:mockk:${Versions.mockk}"
+    const val mockkAndroid = "io.mockk:mockk-android:${Versions.mockk}"
+    const val lifecycleExtensions = "androidx.lifecycle:lifecycle-extensions:${Versions.archLifecycle}"
 
     const val daggerRuntime = "com.google.dagger:dagger:${Versions.dagger}"
     const val daggerAndroid = "com.google.dagger:dagger-android:${Versions.dagger}"
@@ -20,5 +25,29 @@ object Libs {
 
     const val jUnit = "junit:junit:${Versions.jUnit}"
     const val extJunit = "androidx.test.ext:junit:${Versions.extJunit}"
-    const val espressoCore = "androidx.test.espresso:espresso-core:${Versions.espressoCore}"
+
+    const val androidXTestCore =  "androidx.test:core-ktx:${Versions.androidXTestCore}"
+    const val androidXTestExtKotlinRunner = "androidx.test.ext:junit-ktx:${Versions.androidXTestExtKotlinRunner}"
+    const val androidXTestRules = "androidx.test:rules:${Versions.androidXTestRules}"
+    const val fragmentTesting = "androidx.fragment:fragment-testing:${Versions.fragment}"
+    const val testCore =  "androidx.test:core:${Versions.androidXTestCore}"
+    const val fragment =  "androidx.fragment:fragment:${Versions.fragment}"
+    const val espressoCore = "androidx.test.espresso:espresso-core:${Versions.espresso}"
+    const val espressoContrib =  "androidx.test.espresso:espresso-contrib:${Versions.espresso}"
+    const val espressoIntents =  "androidx.test.espresso:espresso-intents:${Versions.espresso}"
+    const val espressoConcurrentIdlingResource = "androidx.test.espresso.idling:idling-concurrent:${Versions.espresso}"
+    const val espressoIdlingResource =  "androidx.test.espresso:espresso-idling-resource:${Versions.espresso}"
+    const val truth =  "com.google.truth:truth:${Versions.truth}"
+    const val archTesting = "androidx.arch.core:core-testing:${Versions.archTesting}"
+    const val roboletric = "org.robolectric:robolectric:${Versions.roboletric}"
+    const val roboletricAnnotations = "org.robolectric:annotations:${Versions.roboletric}"
+    const val legacySupportV4 = "androidx.legacy:legacy-support-v4:${Versions.legacySupportV4}"
+    const val dataBindingCompiler = "com.android.databinding:compiler:${Versions.dataBindingCompiler}"
+    const val materialDesign = "com.google.android.material:material:${Versions.materialDesign}"
+    const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
+    const val gson = "com.google.code.gson:gson:${Versions.gson}"
+    const val room = "androidx.room:room-runtime:${Versions.room}"
+    const val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
+    const val roomKtx = "androidx.room:room-ktx:${Versions.room}"
+    const val roomTesting = "androidx.room:room-testing:${Versions.room}"
 }

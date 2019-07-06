@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Core</string>
+    <string name="internet_unavailable">Unable to connect to internet!</string>
+    <string name="unknown_network_error">An unknown network error has occurred.</string>
 </resources>

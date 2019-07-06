@@ -1,0 +1,9 @@
+dependencies {
+    implementation project(':core')
+    testImplementation project(path: ':core', configuration: 'myTestConfiguration')
+    androidTestImplementation project(path: ':core', configuration: 'myAndroidTestConfiguration')
+
+    kapt Libs.daggerCompiler
+    kapt Libs.daggerAndroidSupportCompiler
+    kaptAndroidTest Libs.dataBindingCompiler
+}

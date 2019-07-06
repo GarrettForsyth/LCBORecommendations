@@ -1,17 +1,3 @@
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
-apply plugin: 'androidx.navigation.safeargs'
-
-android {
-    compileSdkVersion Config.compiledSdkVersion
-    defaultConfig {
-        minSdkVersion Config.minSdkVersion
-        targetSdkVersion Config.targetSdkVersion
-    }
-}
-
 configurations {
     myTestConfiguration.extendsFrom testImplementation
     myAndroidTestConfiguration.extendsFrom androidTestImplementation
@@ -30,14 +16,50 @@ dependencies {
     api Libs.daggerRuntime
     api Libs.daggerAndroid
     api Libs.daggerAndroidSupport
+    api Libs.legacySupportV4
+    api Libs.lifecycleExtensions
+    api Libs.materialDesign
+    api Libs.retrofit
+    api Libs.gson
 
     // Shared unit test dependencies
     testImplementation Libs.jUnit
     testImplementation Libs.extJunit
     testImplementation Libs.espressoCore
+    testImplementation Libs.espressoContrib
+    testImplementation Libs.espressoIntents
+    testImplementation Libs.truth
+    testImplementation Libs.androidXTestCore
+    testImplementation Libs.androidXTestExtKotlinRunner
+    testImplementation Libs.androidXTestRules
+    testImplementation Libs.roboletric
+    testImplementation Libs.mockk
+    testImplementation Libs.archTesting
+    // Once https://issuetracker.google.com/127986458 is fixed this can be testImplementation
+    api Libs.fragmentTesting
+    api Libs.testCore
+    api Libs.fragment
 
     // Shared instrumentation test dependencies
     androidTestImplementation Libs.jUnit
     androidTestImplementation Libs.extJunit
+    androidTestImplementation Libs.androidXTestCore
+    androidTestImplementation Libs.androidXTestExtKotlinRunner
+    androidTestImplementation Libs.androidXTestRules
     androidTestImplementation Libs.espressoCore
+    androidTestImplementation Libs.espressoContrib
+    androidTestImplementation Libs.espressoIntents
+    androidTestImplementation Libs.espressoConcurrentIdlingResource
+    androidTestImplementation Libs.archTesting
+    androidTestImplementation Libs.roboletricAnnotations
+    androidTestImplementation Libs.mockkAndroid
+//    androidTestImplementation "androidx.room:room-testing:$roomVersion"
+    implementation Libs.espressoIdlingResource
+
+    debugImplementation Libs.espressoCore
+    debugImplementation Libs.espressoContrib
+
+
+    kapt Libs.daggerCompiler
+    kapt Libs.daggerAndroidSupportCompiler
 }
