@@ -44,10 +44,12 @@ object Libs {
     const val legacySupportV4 = "androidx.legacy:legacy-support-v4:${Versions.legacySupportV4}"
     const val dataBindingCompiler = "com.android.databinding:compiler:${Versions.dataBindingCompiler}"
     const val materialDesign = "com.google.android.material:material:${Versions.materialDesign}"
-    const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     const val gson = "com.google.code.gson:gson:${Versions.gson}"
     const val room = "androidx.room:room-runtime:${Versions.room}"
     const val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
     const val roomKtx = "androidx.room:room-ktx:${Versions.room}"
     const val roomTesting = "androidx.room:room-testing:${Versions.room}"
+    const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
+    const val gsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
+    const val mockWebServer = "com.squareup.okhttp3:mockwebserver:${Versions.okhttp}"
 }

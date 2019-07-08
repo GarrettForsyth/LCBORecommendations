@@ -26,4 +26,5 @@ object Versions {
     const val retrofit = "2.6.0"
     const val gson = "2.8.5"
     const val room = "2.1.0"
+    const val okhttp = "4.0.0"
 }

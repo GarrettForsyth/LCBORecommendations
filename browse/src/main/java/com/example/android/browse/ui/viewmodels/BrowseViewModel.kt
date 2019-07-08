@@ -4,9 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.android.browse.repo.LCBOItemRepository
-import com.example.android.browse.vo.LCBOItemQueryParameters
 import com.example.android.core.ObservedMutableLiveData
 import com.example.android.core.vo.LCBOItem
+import com.example.android.core.vo.LCBOItemQueryParameters
+import com.example.android.core.vo.SortOrder
 import javax.inject.Inject
 
 class BrowseViewModel @Inject constructor(
@@ -16,9 +17,12 @@ class BrowseViewModel @Inject constructor(
     private val _searchResults = MutableLiveData<List<LCBOItem>>()
     val searchResults: LiveData<List<LCBOItem>> = _searchResults
 
-    val queryParameters = LCBOItemQueryParameters()
-    private val _queryParameters = ObservedMutableLiveData<LCBOItemQueryParameters>()
-        .also { it.postValue(queryParameters) }
+    val queryParameters = LCBOItemQueryParameters(
+        filterString = "",
+        sortOrder = SortOrder.NONE
+    )
+//    private val _queryParameters = ObservedMutableLiveData<LCBOItemQueryParameters>()
+//        .also { it.postValue(queryParameters) }
 
     private val _sortOptionsBottomSheetVisible = MutableLiveData<Boolean>()
     val sortOptionsBottomSheetVisible: LiveData<Boolean>

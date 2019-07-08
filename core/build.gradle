@@ -21,6 +21,7 @@ dependencies {
     api Libs.lifecycleExtensions
     api Libs.materialDesign
     api Libs.retrofit
+    api Libs.gsonConverter
     api Libs.gson
     api Libs.room
     api Libs.roomKtx
@@ -39,6 +40,7 @@ dependencies {
     testImplementation Libs.mockk
     testImplementation Libs.archTesting
     testImplementation Libs.roomTesting
+    testImplementation Libs.mockWebServer
     // Once https://issuetracker.google.com/127986458 is fixed this can be testImplementation
     api Libs.fragmentTesting
     api Libs.testCore

@@ -2,6 +2,8 @@ package com.example.android.core.vo
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.example.android.core.data.LCBOItemContract
+import com.google.gson.annotations.SerializedName
 
 
 /**
@@ -60,37 +62,98 @@ import androidx.room.PrimaryKey
  *    }
  */
 
-@Entity(tableName = "lcbo_items")
+@Entity(tableName = LCBOItemContract.TABLE_NAME)
 data class LCBOItem(
-    @PrimaryKey var id :Int,
+
+    @PrimaryKey
+    @SerializedName("id")
+    var id :Int,
+
+    @SerializedName("name")
     var name: String,
+
+    @SerializedName("tags")
     var tags: String,
+
+    @SerializedName("price_in_cents")
     var priceInCents: Int,
+
+    @SerializedName("regular_price_in_cents")
     var regularPriceInCents: Int,
+
+    @SerializedName("primary_category")
     var primaryCategory: String, // TODO Get all categories(!?)
+
+    @SerializedName("secondary_category")
     var secondaryCategory: String,
+
+    @SerializedName("tertiary_category")
     var tertiaryCategory: String,
+
+    @SerializedName("origin")
     var origin: String, // TODO Get all origins (!?)
     var packageUnitType: String,
+
+    @SerializedName("package_unit_volume_in_milliliters")
     var packageUnitVolumeInMilliliters: Int,
+
+    @SerializedName("total_package_units")
     var totalPackageUnits: Int,
+
+    @SerializedName("volume_in_milliliters")
     var volumeInMilliliters: Int,
+
+    @SerializedName("alcohol_content")
     var alcoholContent: Int,
+
+    @SerializedName("price_per_liter_of_alcohol_in_cents")
     var pricePerLiterOfAlcoholInCents: Int,
+
+    @SerializedName("price_per_liter_of_alcohol")
     var pricePerLiterInCents: Int,
+
+    @SerializedName("sugar_conent")
     var sugarContent: Int,
+
+    @SerializedName("producer_name")
     var producerName: String,
+
+    @SerializedName("released_on")
     var releasedOn: String,
+
+    @SerializedName("has_value_added_promotion")
     var hasValueAddedPromotion: Boolean,
+
+    @SerializedName("has_limited_time_offer")
     var hasLimitedTimeOffer: Boolean,
+
+    @SerializedName("is_seasonal")
     var isSeasonal: Boolean,
+
+    @SerializedName("description")
     var description: String,
+
+    @SerializedName("serving_suggestion")
     var servingSuggestion: String,
+
+    @SerializedName("tasting_note")
     var tastingNote: String,
+
+    @SerializedName("image_thumb_url")
     var imageThumbUrl: String,
+
+    @SerializedName("image_url")
     var imageUrl: String,
+
+    @SerializedName("varietal")
     var varietal: String,
+
+    @SerializedName("style")
     var style: String,
+
+    @SerializedName("is_dead")
     var isDead: Boolean,
+
+    @SerializedName("is_discontinued")
     var isDiscontinued: Boolean
 )
