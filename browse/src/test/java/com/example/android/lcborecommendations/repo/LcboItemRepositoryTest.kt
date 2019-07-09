@@ -3,7 +3,6 @@ package com.example.android.lcborecommendations.repo
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
-import androidx.sqlite.db.SupportSQLiteQuery
 import androidx.test.filters.SmallTest
 import com.example.android.browse.api.LCBOApiService
 import com.example.android.core.data.LCBOItemDao
@@ -11,6 +10,7 @@ import com.example.android.browse.repo.LCBOItemRepository
 import com.example.android.core.AppExecutors
 import com.example.android.core.api.ApiResponse
 import com.example.android.core.api.ApiSuccessResponse
+import com.example.android.core.api.QueryOptionsMapConverter
 import com.example.android.core.data.SupportSQLiteQueryConverter
 import com.example.android.core.vo.LCBOItem
 import com.example.android.core.vo.LCBOItemQueryParameters
@@ -31,11 +31,14 @@ class LCBOItemRepositoryTest {
     private val lcboItemDao: LCBOItemDao = mockk(relaxed = true)
     private val lcboApiService: LCBOApiService = mockk(relaxed = true)
     private val supportSQLiteQueryConverter: SupportSQLiteQueryConverter = mockk(relaxed = true)
+    private val optionsMapConverter: QueryOptionsMapConverter = mockk(relaxed = true)
+
     private val lcboItemRepository = LCBOItemRepository(
         appExecutors,
         lcboItemDao,
         lcboApiService,
-        supportSQLiteQueryConverter
+        supportSQLiteQueryConverter,
+        optionsMapConverter
     )
 
     private val queryParameters: LCBOItemQueryParameters = mockk()
@@ -46,13 +49,12 @@ class LCBOItemRepositoryTest {
         val dbData = MutableLiveData<List<LCBOItem>>()
         every { lcboItemDao.getLcboItems(any()) } returns dbData
 
-        // GIVEN - the api service successfully returns fake data -- networkData
+        // AND - the api service successfully returns fake data -- networkData
         val networkData = emptyList<LCBOItem>()
         val call = MutableLiveData<ApiResponse<List<LCBOItem>>>()
-        val queryMap: Map<String,String> = mockk(relaxed = true)
-        every { lcboApiService.fetchLcboItems(queryMap) } returns call
+        every { lcboApiService.fetchLcboItems(any()) } returns call
 
-        // GIVEN - the results are being observed
+        // AND - the results are being observed
         val observer: Observer<Resource<List<LCBOItem>>> = mockk(relaxed = true)
 
         // WHEN - searchLcboItems is called
@@ -66,7 +68,7 @@ class LCBOItemRepositoryTest {
         dbData.postValue(null)
 
         // THEN - the api service should have fetched once
-        verify(exactly = 1) { lcboApiService.fetchLcboItems(queryMap) }
+        verify(exactly = 1) { lcboApiService.fetchLcboItems(any()) }
 
         // WHEN - the LCBO API responds with a result
         call.postValue(ApiSuccessResponse(networkData))

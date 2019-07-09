@@ -68,11 +68,11 @@ class UserBrowsesForStrongBeerTest {
         // THEN - I should see a list of beer sorted by its alcohol content
         // TODO: create a matcher that matches a recycler view with a list of expected lcbo items
         expectedResults.forEachIndexed { position, expectedItem ->
-            onView(withId(R.id.browse_results_list))
+            onView(withId(R.id.browse_search_results_list))
                 .perform(RecyclerViewActions
                     .scrollToPosition<DataBoundViewHolder<LcboItemListItemBinding>>(position)
                 )
-            onView(withId(R.id.browse_results_list))
+            onView(withId(R.id.browse_search_results_list))
                 .check(matches(allOf(
                     hasItemAtPosition(hasDescendant(withText(expectedItem.name)), position)
                 )))

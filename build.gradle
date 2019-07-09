@@ -24,6 +24,7 @@ allprojects {
 
     tasks.withType(Test) {
         testLogging {
+            ignoreFailures = true
             exceptionFormat 'full'
             showCauses true
             showExceptions true
