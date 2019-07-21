@@ -15,7 +15,7 @@ class NetworkModule {
     @Provides
     fun provideLCBOApiService(): LCBOApiService {
         return Retrofit.Builder()
-            .baseUrl("localhost:3000") //todo deploy
+            .baseUrl("https://localhost:3000") //todo deploy
             .addConverterFactory(EnvelopeConverterFactory())
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(LiveDataCallAdapterFactory())

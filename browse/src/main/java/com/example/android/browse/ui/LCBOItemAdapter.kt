@@ -16,7 +16,6 @@ import com.example.android.core.vo.LCBOItemDiffCallback
  * A RecyclerView adapter for [LCBOItem] class.
  */
 class LCBOItemAdapter(
-    private val dataBindingComponent: DataBindingComponent,
     appExecutors: AppExecutors
 ) : DataBoundListAdapter<LCBOItem, LcboItemListItemBinding>(
     appExecutors = appExecutors,
@@ -28,12 +27,12 @@ class LCBOItemAdapter(
             LayoutInflater.from(parent.context),
             R.layout.lcbo_item_list_item,
             parent,
-            false,
-            dataBindingComponent
+            false
         )
         return binding
     }
 
     override fun bind(binding: LcboItemListItemBinding, item: LCBOItem) {
-        binding.lcboItem = item }
+        binding.lcboItem = item
+    }
 }

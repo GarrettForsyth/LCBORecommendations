@@ -16,6 +16,7 @@ import com.example.android.lcborecommendations.MainActivity
 import com.example.android.lcborecommendations.R
 import com.example.android.lcborecommendations.test.CustomMatchers.hasItemAtPosition
 import com.example.android.lcborecommendations.test.fixtures.fixtureForBeerQuerySortedAndFiltered
+import com.example.android.lcborecommendations.test.verifyRecyclerViewLCBOItemContents
 import org.hamcrest.CoreMatchers.allOf
 import org.junit.Before
 import org.junit.Rule
@@ -59,21 +60,7 @@ class UserBrowsesForLCBOItems {
 
         // THEN - I should see only the beers from the starting list
         val expectedResults: List<LCBOItem> = fixtureForBeerQuerySortedAndFiltered
-        expectedResults.forEachIndexed { position, expectedItem ->
-            onView(withId(R.id.browse_search_results_list))
-                .perform(
-                    RecyclerViewActions
-                        .scrollToPosition<DataBoundViewHolder<LcboItemListItemBinding>>(position)
-                )
-            onView(withId(R.id.browse_search_results_list))
-                .check(
-                    matches(
-                        allOf(
-                            hasItemAtPosition(hasDescendant(withText(expectedItem.name)), position)
-                        )
-                    )
-                )
-        }
+        verifyRecyclerViewLCBOItemContents(R.id.browse_search_results_list, expectedResults)
     }
 
 }

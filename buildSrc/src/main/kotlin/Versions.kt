@@ -1,5 +1,5 @@
 object Versions {
-    const val gradle = "3.5.0-beta05"
+    const val gradle = "3.5.0-rc01"
     const val allOpen = "1.3.40"
     const val kotlin = "1.3.40"
     const val appCompat = "1.0.2"

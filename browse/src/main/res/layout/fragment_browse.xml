@@ -70,8 +70,11 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/browse_search_results_list"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/browse_sort_order_button"/>
+                android:layout_height="0dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toBottomOf="@id/browse_search_button"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:listitem="@layout/lcbo_item_list_item" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

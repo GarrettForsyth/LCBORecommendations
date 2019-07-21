@@ -11,10 +11,13 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
+import com.example.android.browse.BR
 
 import com.example.android.browse.R
 import com.example.android.browse.databinding.FragmentBrowseBinding
+import com.example.android.browse.ui.LCBOItemAdapter
 import com.example.android.browse.ui.viewmodels.BrowseViewModel
+import com.example.android.core.AppExecutors
 import com.example.android.core.di.Injectable
 import com.example.android.lcborecommendations.test.OpenForTesting
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -31,7 +34,12 @@ class BrowseFragment : Fragment(), Injectable {
 
     lateinit var viewModel: BrowseViewModel
 
+    @Inject
+    lateinit var appExecutors: AppExecutors
+
     lateinit var binding: FragmentBrowseBinding
+
+    private lateinit var lcboItemAdapter: LCBOItemAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -48,6 +56,8 @@ class BrowseFragment : Fragment(), Injectable {
             false
         )
         binding.browseViewModel = viewModel
+        lcboItemAdapter = LCBOItemAdapter(appExecutors) // wait until we add paging before factoring out
+        binding.browseSearchResultsList.adapter = lcboItemAdapter
 
         return binding.root
     }
@@ -55,7 +65,7 @@ class BrowseFragment : Fragment(), Injectable {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel.searchResults.observe(this, Observer {
-            binding.browseSearchResultsList.adapter
+            lcboItemAdapter.submitList(it)
         })
         observeBottomSheetVisibilityState()
     }

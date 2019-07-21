@@ -18,11 +18,13 @@ import com.example.android.browse.ui.fragments.BrowseFragment
 import com.example.android.core.vo.SortOrder
 import com.example.android.core.ui.ViewModelUtil
 import com.example.android.core.vo.LCBOItem
+import com.example.android.lcborecommendations.InstantAppExecutors
 import com.example.android.lcborecommendations.test.listOfLcboItems
 import com.example.android.lcborecommendations.test.verifyRecyclerViewLCBOItemContents
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
+import kotlinx.android.synthetic.main.fragment_browse.*
 import org.hamcrest.CoreMatchers.not
 import org.junit.Before
 import org.junit.Test
@@ -55,11 +57,10 @@ class BrowseFragmentTest {
         onView(withId(R.id.browse_query_edit_text)).check(matches(isDisplayed()))
         onView(withId(R.id.browse_sort_order_button)).check(matches(isDisplayed()))
         onView(withId(R.id.browse_sort_direction_toggle)).check(matches(isDisplayed()))
+        onView(withId(R.id.browse_search_results_list)).check(matches(isDisplayed()))
 
         // THEN - initial views are not displayed
         onView(withId(R.id.browse_sort_order_options_bottom_sheet))
-            .check(matches(not(isDisplayed())))
-        onView(withId(R.id.browse_search_results_list)) // Initially results are empty
             .check(matches(not(isDisplayed())))
     }
 
@@ -168,6 +169,7 @@ class TestBrowseFragment: BrowseFragment() {
 class TestBrowseFragmentFactory: FragmentFactory() {
     override fun instantiate(classLoader: ClassLoader, className: String): Fragment {
         return (super.instantiate(classLoader, className) as TestBrowseFragment).apply {
+            this.appExecutors = InstantAppExecutors()
             this.viewModel = mockk(relaxed = true)
             this.viewModelFactory = ViewModelUtil.createFor(this.viewModel)
             every { viewModel.sortOptionsBottomSheetVisible } returns fakeSortOptionsBottomSheetVisible

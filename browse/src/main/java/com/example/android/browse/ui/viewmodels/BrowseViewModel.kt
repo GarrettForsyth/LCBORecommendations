@@ -4,14 +4,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.android.browse.repo.LCBOItemRepository
-import com.example.android.core.ObservedMutableLiveData
 import com.example.android.core.vo.LCBOItem
 import com.example.android.core.vo.LCBOItemQueryParameters
 import com.example.android.core.vo.SortOrder
 import javax.inject.Inject
 
 class BrowseViewModel @Inject constructor(
-    val lcboItemRepository: LCBOItemRepository
+    private val lcboItemRepository: LCBOItemRepository
 ): ViewModel() {
 
     private val _searchResults = MutableLiveData<List<LCBOItem>>()
