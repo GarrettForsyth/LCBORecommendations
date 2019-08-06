@@ -59,6 +59,7 @@ dependencies {
     androidTestImplementation Libs.archTesting
     androidTestImplementation Libs.roboletricAnnotations
     androidTestImplementation Libs.mockkAndroid
+    androidTestImplementation Libs.mockWebServer
 //    androidTestImplementation "androidx.room:room-testing:$roomVersion"
     implementation Libs.espressoIdlingResource
 

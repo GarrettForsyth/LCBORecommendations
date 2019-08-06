@@ -7,7 +7,7 @@ data class LCBOApiResponse<T>(
     val status: Int,
 
     @SerializedName("message")
-    val message: String,
+    val message: String?,
 
     @SerializedName("pager")
     val pager: Pager,
@@ -29,6 +29,9 @@ data class Pager(
     @SerializedName("is_first_page")
     val isFirstPage: Boolean,
 
+    @SerializedName("is_final_page")
+    val isFinalPage: Boolean,
+
     @SerializedName("current_page")
     val currentPage: Int,
 
@@ -36,15 +39,21 @@ data class Pager(
     val currentPagePath: String,
 
     @SerializedName("next_page")
-    val nextPage: Int,
+    val nextPage: Int?,
 
     @SerializedName("next_page_path")
-    val nextPagePath: String,
+    val nextPagePath: String?,
 
     @SerializedName("previous_page")
-    val previousPage: Int,
+    val previousPage: Int?,
 
     @SerializedName("previous_page_path")
-    val previousPagePath: String
+    val previousPagePath: String?,
+
+    @SerializedName("total_pages")
+    val totalPages: Int,
+
+    @SerializedName("total_pages_path")
+    val totalPagesPath: String
 )
 
